@@ -40,4 +40,37 @@ CHIP CPU {
 
     PARTS:
     // Put your code here:
+    // 用or16 來命名 isC、c1、d2之類的後面比較好使用
+    Or16(a=false ,b=instruction ,out[15]=isC ,out[12]=a ,out[11]=c1 ,out[10]=c2 ,out[9]=c3 ,out[8],=c4 ,out[7]=c5 ,out[6]=c6 ,out[5]=d1 , out[4]=d2 , out[3]=d3 , out[2]=j1 , out[1]=j2 , out[0]=j3);
+
+    //從圖片左到右開始編碼 
+    // 第一個 Mux16   c甲 = isC = 1 
+    Mux16(a=instruction ,b=ALUoutput ,sel=isC ,out=intoA)     //  sel就是c甲
+
+    // A register      c乙 = isA(0) 或 isC&d1(1)   = Aload
+    Not(in=isC ,out=isA);          //  isC=I15  isA=!isC       進去的是A或C指令
+    And(a=isC ,b=d1 ,out=whoareyou);              //  whoareyou = isC & d1     
+    Or(a=isA, b=whoareyou, out=Aload);
+
+    ARegister(in=intoA ,load=Aload ,out=ARout ,out[0..14]=addressM);    //  load = isA 或 (isC & d1)    addressM = ARout[0..14]
+
+    // 第二個 Mux16   c丙  = a 
+    Mux16(a=ARout ,b=inM ,sel=a ,out=AorM);
+
+    // D register
+    And(a=isC ,b=d2 ,out=Dload)
+    Dregister(in=ALUoutput ,load=Dload ,out=Dout);   //   Dload = isC & d2  =  c丁  
+
+
+    // ALU  
+    ALU(x=Dout ,y=AorM ,zx=c1 ,nx=c2 ,zy=c3 ,ny=c4 ,f=c5 ,no=c6 ,out=ALUoutput ,out=outM ,zr=zr ,ng=ng);  // c戊 = zx、nx、zy、ny、f、no   c己 = zr、ng
+
+
+    // PC 
+    And()    
+
+
+
+
+
 }

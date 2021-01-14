@@ -1,0 +1,12 @@
+(WHILE1)
+@16384
+D=A
+@i
+M=D
+@24576
+D=A
+@i
+D=D-M
+@END2
+D;JGE
+@color
