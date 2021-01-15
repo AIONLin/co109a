@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // This file is part of www.nand2tetris.org
 // and the book "The Elements of Computing Systems"
 // by Nisan and Schocken, MIT Press.
@@ -22,28 +21,3 @@ CHIP Bit {
     DFF(in=Muxout,out=o,out=out);
 
 }
-=======
-// This file is part of www.nand2tetris.org
-// and the book "The Elements of Computing Systems"
-// by Nisan and Schocken, MIT Press.
-// File name: projects/03/a/Bit.hdl
-
-/**
- * 1-bit register:
- * If load[t] == 1 then out[t+1] = in[t]
- *                 else out does not change (out[t+1] = out[t])
- */
-
-CHIP Bit {
-    IN in, load;
-    OUT out;
-
-    PARTS:
-    // Put your code here:
-
-    // in 接到b (詳情參見Mux)
-    Mux(b=in,a=o,sel=load,out=Muxout);     //不允許out出去還拉回來，用個Ｏ做中間替代
-    DFF(in=Muxout,out=o,out=out);
-
-}
->>>>>>> 2f41a18f1cb91a5f7b9277f4caf88b24e5963caf
