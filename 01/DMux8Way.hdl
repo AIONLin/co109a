@@ -37,7 +37,7 @@ CHIP DMux8Way {
 
     And(a=in,b=nsel0,out=innsel0c);
     And(a=innsel0c,b=sel[1],out=insel0nsel1c);
-    And(a=insel0nsel1c,b=sel2,out=c);
+    And(a=insel0nsel1c,b=nsel2,out=c);
 
     And(a=in,b=sel[0],out=insel0d);
     And(a=insel0d,b=sel[1],out=insel0nsel1d);
@@ -58,6 +58,19 @@ CHIP DMux8Way {
     And(a=in,b=sel[0],out=insel0h);
     And(a=insel0h,b=sel[1],out=insel0nsel1h);
     And(a=insel0nsel1h,b=sel[2],out=h);
+
+
+    //DMux(in=in,sel=sel[2],a=Dabcd,b=Defgh);
+    //DMux(in=Dabcd,sel=sel[1],a=Dab,b=Dcd);
+    //DMux(in=Defgh,sel=sel[1],a=Def,b=c);
+    //DMux(in=Dab,sel=sel[0],a=a,b=b);
+    //DMux(in=Dcd,sel=sel[0],a=c,b=d);
+    //DMux(in=Def,sel=sel[0],a=e,b=f);
+    //DMux(in=Dgh,sel=sel[0],a=g,b=h);
+
+    //DMux(in=in,sel=sel[2],a=Dabcd,b=Defgh);
+    //DMux4Way(in=Dabcd,sel=sel[0..1],a=a,b=b,c=c,d=d);
+    //DMux4Way(in=Defgh,sel=sel[0..1],a=e,b=f,c=g,d=h);
 
 
 
