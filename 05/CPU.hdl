@@ -49,8 +49,8 @@ CHIP CPU {
 
     // A register      c乙 = isA(0) 或 isC&d1(1)   = Aload
     Not(in=isC ,out=isA);          //  isC=I15  isA=!isC       進去的是A或C指令
-    And(a=isC ,b=d1 ,out=whoareyou);              //  whoareyou = isC & d1     
-    Or(a=isA, b=whoareyou, out=Aload);
+    And(a=isC ,b=d1 ,out=isCd1);              //  whoareyou = isC & d1     
+    Or(a=isA, b=isCd1, out=Aload);
 
     ARegister(in=intoA ,load=Aload ,out=ARout ,out[0..14]=addressM);    //  load = isA 或 (isC & d1)    addressM = ARout[0..14]
 
@@ -67,7 +67,22 @@ CHIP CPU {
 
 
     // PC 
-    And()    
+    And((a=isC,b=jump,out=PCload);
+    PC(in=Aout, load=PCload, reset=reset, inc=true, out[0..14]=pc));
+    // 權重 : reset > load > inc  所以不是reset不是load的話 inc+1     
+    
+    // JUMP 
+    And(a=ng, b=ji, out=LTJump);  // out小於0
+    And(a=zr, b=j2, out=EQJump);  // out等於0
+    Or(a=ng, b=zr, out=ngzr);
+    Not(in=ngzr, out=gt);         //都不是就是大於了
+    And(a=gt, b=j3, out=GTJump);
+
+    Or(a=LTJump, b=EQJump, out=LEJump);
+    Or(a=LEJump, b=GTJump, out=jump);
+
+    // writeM
+    And(a=isC, b=d3, out=writeM);
 
 
 

@@ -12,3 +12,59 @@
 // the screen should remain fully clear as long as no key is pressed.
 
 // Put your code here.
+
+// 參考解答  並試著自己寫出(有偷看)
+
+(RESTART)
+@SCREEN
+D=A               //把 Screen 取出
+@0                // 放入 R0 
+M=D	//PUT SCREEN START LOCATION IN RAM0
+
+///////////////////////////
+(KBDCHECK)       // 看鍵盤有無被按下
+
+@KBD             
+D=M
+@BLACK
+D;JGT	//  被按下就到變黑   JUMP IF ANY KBD KEYS ARE PRESSED 
+@WHITE
+D;JEQ	//  無為白           ELSE JUMP TO WHITEN
+
+@KBDCHECK
+0;JMP
+///////////////////////////
+(BLACK)
+@1
+M=-1	//  開始填黑色(-1)   WHAT TO FILL SCREEN WITH (-1=11111111111111)
+@CHANGE
+0;JMP
+
+(WHITE)
+@1
+M=0	//      填回白色(0)  WHAT TO FILL SCREEN WITH
+@CHANGE
+0;JMP
+//////////////////////////
+(CHANGE)
+@1	//     看剛剛所填入的顏色      CHECK WHAT TO FILL SCREEN WITH
+D=M	//     白或黑                    D CONTAINS BLACK OR WHITE
+
+@0
+A=M	//     GET ADRESS OF SCREEN PIXEL TO FILL
+M=D	//     FILL IT
+
+@0
+D=M+1	// 加一  INC TO NEXT PIXEL
+@KBD
+D=A-D	// 看兩者相差KBD-SCREEN=A
+
+@0
+M=M+1	//INC TO NEXT PIXEL
+A=M
+
+@CHANGE
+D;JGT	//IF A=0 EXIT AS THE WHOLE SCREEN IS BLACK
+/////////////////////////
+@RESTART
+0;JMP
