@@ -38,8 +38,8 @@ CHIP Memory {
     Screen(in=in,address=address[0..12],load=Sload,out=S);
     Keyboard(out=K);
 
-    Mux16(a=S,b=K,sel=address[13],out=SKOut);
-    Mux16(a=R,b=SKout,sel=address[14],out=out);
+    Mux16(a=S,b=K,sel=address[13],out=skout);
+    Mux16(a=R,b=skout,sel=address[14],out=out);
 
 
 }
