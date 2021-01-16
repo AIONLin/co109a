@@ -44,7 +44,7 @@ CHIP ALU {
     PARTS:
    // Put you code here:
 
-   // if (zx == 1) set x = 0        // 16-bit constant
+    // if (zx == 1) set x = 0        // 16-bit constant
    Mux16(a=x, b=false, sel=zx, out=x0);
 
    // if (nx == 1) set x = !x       // bitwise not
@@ -70,13 +70,16 @@ CHIP ALU {
    // if (out == 0) set zr = 1
    // if (out < 0) set ng = 1
 
+  
+
+   
    Not16(in=outf,out=NOToutf);
-   Mux16(a=outf,b=NOToutf,sel=no,out=outno,out[15]=ng,out=out,out[0..7]=out07,out[8..15]=out815);
+   Mux16(a=outf, b=NOToutf, sel=no,  out=out, out[15]=ng, out[0..7]=out07, out[8..15]=out815);
 
    Or8Way(in=out07,out=ORout07);
    Or8Way(in=out815,out=ORout815);
    Or(a=ORout07,b=ORout815,out=out015);
-   Not(in=out015,out=n015);
+   Not(in=out015,out=zr);
 
 
    //Not16(in=out815,out=n815);
