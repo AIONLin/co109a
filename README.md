@@ -22,6 +22,8 @@
 
 [重點六 CPU](https://github.com/AIONLin/co109a/blob/master/HomeWork/W12%2311.md)
 
+[重點七 組譯器](https://github.com/AIONLin/co109a/blob/master/HomeWork/W14%2313W15%2314.md)
+
 
 [第一周](https://github.com/AIONLin/co109a/blob/master/HomeWork/W1%231.md)
 Not - DMux
@@ -67,11 +69,8 @@ CPU
 Computer
 
 
-[第十四周]()
-組譯器沒符號
+[第十四周+第十五周](https://github.com/AIONLin/co109a/blob/master/HomeWork/W14%2313W15%2314.md)
+組譯器沒符號    組譯器有符號
 
 
-
-[第十五周]()
-組譯器有符號
 
