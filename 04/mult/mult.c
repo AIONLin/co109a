@@ -1,9 +1,10 @@
+// 參考老師與網路上其他解答後 寫出來的 以課堂上的5*3當例子
 #include <stdio.h>
 
 int main() {
-    int R0 = 5;               
+    int R0 = 5;      
     int R1 = 3;
-    int R2 = 0;
+    int R2 = 0;  //15
 loop:    
     // while (R0 > 0) { //
     if (R0<=0) goto endLoop; 
