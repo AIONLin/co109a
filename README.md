@@ -41,14 +41,14 @@ DFF Bit Register
 [第七周](https://github.com/AIONLin/co109a/blob/master/HomeWork/W7%236.md)
 RAM8 - RAM16K
 
-[第七周補](https://github.com/AIONLin/HWPic/blob/master/HomeWorkPic/201029Week7HW2.jpg)
+[第七周補充](https://github.com/AIONLin/HWPic/blob/master/HomeWorkPic/201029Week7HW2.jpg)
 HackCPU組合語言翻成機器碼
 
 
 [第八周](https://github.com/AIONLin/co109a/blob/master/HomeWork/W8%237.md)
 PC
 
-[第八周補](https://github.com/AIONLin/HWPic/blob/master/HomeWorkPic/R0inc.jpg)
+[第八周補充](https://github.com/AIONLin/HWPic/blob/master/HomeWorkPic/R0inc.jpg)
 撰寫組合語言
 
 [第九周](https://github.com/AIONLin/co109a/blob/master/HomeWork/W9%238.md)
